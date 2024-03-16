@@ -1,0 +1,19 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { QuestionCard } from '../components/react/QuestionCard';
+import Main from '../components/astro/Main.astro';
+
+const options = ['Una estatua', 'Una escultura', 'Una reliquia'];
+const question = 'Que se dice ';
+---
+
+<Layout title="Game page" description="Game page">
+  <Main bg="game">
+    <QuestionCard
+      options={options}
+      question={question}
+      client:load
+      isPast={false}
+    />
+  </Main>
+</Layout>

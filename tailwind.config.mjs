@@ -13,8 +13,8 @@ export default {
       },
       backgroundImage: {
         inicio: "url('public/img/bg_inicio.png')",
-        acertijo: "url('public/img/bg_acertijo.png')",
-        info: "url('public/img/bg_info.png')",
+        game: "url('public/img/bg_acertijo.png')",
+        info: "url('public/img/bg_inicio.png')",
       },
     },
   },
