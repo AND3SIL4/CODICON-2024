@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Container } from './Container';
 
 export const Carousel = ({ texts }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -7,6 +8,9 @@ export const Carousel = ({ texts }) => {
     setCurrentIndex((prevIndex) =>
       prevIndex === texts.length - 1 ? 0 : prevIndex + 1
     );
+    if (currentIndex === texts.length - 1) {
+      window.location.href = '/selection';
+    }
   };
 
   const goToPrevSlide = () => {
@@ -17,16 +21,18 @@ export const Carousel = ({ texts }) => {
 
   return (
     <div className="relative">
-      <div className="overflow-hidden w-[600px] h-[400px] bg-purple-300 flex justify-center items-center rounded-lg shadow-xl shadow-black">
+      <Container>
         {texts.map((text, index) => (
           <h2
             key={index}
-            className={`text-wrap ${index === currentIndex ? '' : 'hidden'}`}
+            className={`mx-10 text-center text-2xl font-bold ${
+              index === currentIndex ? '' : 'hidden'
+            }`}
           >
             {text}
           </h2>
         ))}
-      </div>
+      </Container>
       <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
         {texts.map((_, index) => (
           <button

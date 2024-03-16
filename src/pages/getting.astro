@@ -3,11 +3,15 @@ import Layout from '../layouts/Layout.astro';
 import Main from '../components/astro/Main.astro';
 import { Carousel } from '../components/react/Carousel';
 
-const cards = ['perro', 'gato', 'pato', 'humano'];
+const cards = [
+  'Eres una persona que se encuentra en medio de un virus que amenaza con propagarse por toda la ciudad. En tus manos sostienes un misterioso control remoto que te permite controlar dos televisores que te llevan a elegir entre dos destinos: el pasado y el futuro.',
+  'En el televisor del futuro, puedes encontrar al creador del virus y buscar el antídoto para detener su propagación. \n En el televisor del pasado, se tiene la oportunidad de evitar que el virus se propague en primer lugar al encontrar al responsable y detenerlo a tiempo.',
+  'Para lograrlo, debes resolver una serie de acertijos que se presentan al viajar a través de los televisores. Cada acertijo representa un desafío mental que debes superar en el menor tiempo posible. \n Pero, ¡cuidado! Si no logras resolver los acertijos a tiempo, el virus se trasmitirá sin control y el antídoto nunca será encontrado.',
+];
 ---
 
 <Layout title="Gettin started" description="Gettin started">
-  <Main bg="inicio">
+  <Main bg="info">
     <Carousel texts={cards} client:load />
   </Main>
 </Layout>

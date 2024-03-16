@@ -11,13 +11,15 @@ export const QuestionCard = ({ question, options, isPast }) => {
         setTimeLeft(timeLeft - 1);
       } else {
         // Lógica para manejar el tiempo agotado
-        console.log('Tiempo agotado');
+        alert('Tiempo agotado');
+        window.location.href = '/';
       }
     }, 1000);
 
     return () => clearTimeout(timer);
   }, [timeLeft]);
 
+  // Logica para manejar la seleccion de preguntas
   const handleOptionSelect = (option) => {
     setSelectedOption(option);
     alert(option);
@@ -27,7 +29,7 @@ export const QuestionCard = ({ question, options, isPast }) => {
     <div
       className={`${
         isPast ? 'bg-custom_purple' : 'bg-custom_light_green'
-      } shadow-md rounded-md p-6`}
+      } shadow-md rounded-xl px-8 py-12`}
     >
       <div className="flex justify-center items-center flex-col gap-3 mb-4">
         <span className="borde text-black px-2 py-1 rounded-md flex gap-3">

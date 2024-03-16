@@ -2,6 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import { QuestionCard } from '../components/react/QuestionCard';
 import Main from '../components/astro/Main.astro';
+import Congrats from '../components/astro/Congrats.astro';
+import Rules from '../components/astro/Rules.astro';
 
 const options = ['Una estatua', 'Una escultura', 'Una reliquia'];
 const question = 'Que se dice ';
@@ -9,11 +11,13 @@ const question = 'Que se dice ';
 
 <Layout title="Game page" description="Game page">
   <Main bg="game">
-    <QuestionCard
+    <!-- <QuestionCard
       options={options}
       question={question}
       client:load
       isPast={false}
-    />
+    /> -->
+    <Congrats isPast gameOver />
+    <!-- <Rules /> -->
   </Main>
 </Layout>

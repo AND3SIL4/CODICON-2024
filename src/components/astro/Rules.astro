@@ -1,0 +1,34 @@
+---
+import { Container } from '../react/Container';
+import Check from './Check.astro';
+
+const rules = [
+  'Debes adivinar el acertijo antes de que acabe el tiempo.',
+  'Si respondes correctamente avanzas al siguiente acertijo. ',
+  'Evita perder 3 vidas para ganar. ',
+  'Si logras responder todos los acertijos correctamente, ¡cumplirás tu misión!',
+];
+---
+
+<Container isPast>
+  <img
+    src="../../../public/img/rules.png"
+    alt="Rules image"
+    title="Rules image"
+    class="m-auto"
+  />
+  <div class="my-16">
+    <ul>
+      {
+        rules.map((rule) => (
+          <li class="text-xl m-2 flex  gap-4 ">
+            <span>
+              <Check />
+            </span>
+            {rule}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Container>

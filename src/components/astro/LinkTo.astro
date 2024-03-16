@@ -1,0 +1,16 @@
+---
+interface Props {
+  image: string;
+}
+
+const { image } = Astro.props;
+---
+
+<a href='/game'>
+  <img
+    src={image}
+    title="Imagen de pasado"
+    alt="Imagen de pasado"
+    width="300"
+  />
+</a>

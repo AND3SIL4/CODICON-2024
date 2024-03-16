@@ -1,27 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Main from '../components/astro/Main.astro';
+import LinkTo from '../components/astro/LinkTo.astro';
 ---
 
 <Layout title="Selection page" description="Selection page">
   <Main bg="info">
     <div class="flex gap-32">
-      <a href="#">
-        <img
-          src="../../public/icons/televisor_futuro.svg"
-          title="Imagen de pasado"
-          alt="Imagen de pasado"
-          width="300"
-        />
-      </a>
-      <a href="#">
-        <img
-          src="../../public/icons/televisor_pasado.svg"
-          title="Imagen de pasado"
-          alt="Imagen de pasado"
-          width="300"
-        />
-      </a>
+      <LinkTo image="../../public/icons/televisor_futuro.svg" />
+      <LinkTo image="../../public/icons/televisor_pasado.svg" />
     </div>
   </Main>
 </Layout>
