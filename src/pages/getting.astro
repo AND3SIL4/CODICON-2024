@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Main from '../components/astro/Main.astro';
+import { Carousel } from '../components/react/Carousel';
+
+const cards = ['perro', 'gato', 'pato', 'humano'];
+---
+
+<Layout title="Gettin started" description="Gettin started">
+  <Main bg="inicio">
+    <Carousel texts={cards} client:load />
+  </Main>
+</Layout>

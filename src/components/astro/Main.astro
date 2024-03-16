@@ -1,0 +1,21 @@
+---
+interface Props {
+  bg: string;
+}
+
+const { bg } = Astro.props;
+---
+
+<main
+  class=`bg-${bg} h-screen flex flex-col justify-center items-center gap-4 p-2`
+  {...Astro.props}
+>
+  <slot />
+</main>
+
+<style>
+  main {
+    background-position: center center;
+    background-size: cover;
+  }
+</style>
