@@ -10,14 +10,14 @@ const question = 'Que se dice ';
 ---
 
 <Layout title="Game page" description="Game page">
-  <Main bg="game">
-    <!-- <QuestionCard
+  <Main bg="bg-game">
+    <QuestionCard
       options={options}
       question={question}
       client:load
       isPast={false}
-    /> -->
-    <Congrats isPast gameOver />
-    <!-- <Rules /> -->
+    />
+    <!-- <Congrats isPast={true} gameOver={false} /> 
+    <Rules /> -->
   </Main>
 </Layout>

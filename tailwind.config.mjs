@@ -12,9 +12,9 @@ export default {
         custom_orange: '#FF9580',
       },
       backgroundImage: {
-        inicio: "url('public/img/bg_inicio.png')",
-        game: "url('public/img/bg_acertijo.png')",
-        info: "url('public/img/bg_inicio.png')",
+        inicio: "url('public/img/inicio.png')",
+        game: "url('public/img/game.png')",
+        info: "url('public/img/info.png')",
       },
     },
   },

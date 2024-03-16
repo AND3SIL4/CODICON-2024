@@ -29,10 +29,10 @@ export const QuestionCard = ({ question, options, isPast }) => {
     <div
       className={`${
         isPast ? 'bg-custom_purple' : 'bg-custom_light_green'
-      } shadow-md rounded-xl px-8 py-12`}
+      } shadow-md rounded-xl px-8 pb-12 pt-5`}
     >
       <div className="flex justify-center items-center flex-col gap-3 mb-4">
-        <span className="borde text-black px-2 py-1 rounded-md flex gap-3">
+        <span className="text-black px-2 py-1 rounded-md flex gap-3">
           <span>
             <img src="../../../public/icons/clock.svg" alt="Reloj" />
           </span>
@@ -45,7 +45,7 @@ export const QuestionCard = ({ question, options, isPast }) => {
         {options.map((option, index) => (
           <button
             key={index}
-            className={`w-full py-2 px-4 rounded-md ${
+            className={`w-full py-2 px-4 rounded-md border border-black font-bold  ${
               selectedOption === option
                 ? 'bg-green-600 text-white'
                 : 'bg-gray-200 text-gray-800 hover:bg-green-100 hover:text-black'

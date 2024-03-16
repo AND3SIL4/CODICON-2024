@@ -6,15 +6,12 @@ interface Props {
 const { bg } = Astro.props;
 ---
 
-<main
-  class={`bg-inicio h-screen flex flex-col justify-center items-center gap-4 p-2`}
-  {...Astro.props}
->
+<div class={`${bg} h-screen flex flex-col justify-center items-center gap-4 p-2`}>
   <slot />
-</main>
+</div>
 
 <style>
-  main {
+  div {
     background-position: center center;
     background-size: cover;
   }
