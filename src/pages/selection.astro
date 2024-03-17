@@ -1,14 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Main from '../components/astro/Main.astro';
-import LinkTo from '../components/astro/LinkTo.astro';
+import { LinkTo } from '../components/react/LinkTo';
 ---
 
 <Layout title="Selection page" description="Selection page">
   <Main bg="bg-info">
     <div class="flex gap-32">
-      <LinkTo image="../../public/icons/televisor_futuro.svg" />
-      <LinkTo image="../../public/icons/televisor_pasado.svg" />
+      <LinkTo
+        url="../../public/icons/televisor_futuro.svg"
+        isPast={false}
+        client:load
+      />
+      <LinkTo
+        url="../../public/icons/televisor_pasado.svg"
+        isPast
+        client:load
+      />
     </div>
   </Main>
 </Layout>

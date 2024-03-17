@@ -1,12 +1,13 @@
 ---
 interface Props {
   image: string;
+  id: string;
 }
 
 const { image } = Astro.props;
 ---
 
-<a href='/game'>
+<a href="/game">
   <img
     src={image}
     title="Imagen de pasado"
