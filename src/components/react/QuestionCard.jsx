@@ -14,7 +14,7 @@ const defaultOptions = [
 
 export const QuestionCard = () => {
   const [selectedOption, setSelectedOption] = useState(null);
-  const [timeLeft, setTimeLeft] = useState(300); // Tiempo en segundos
+  const [timeLeft, setTimeLeft] = useState(200); // Tiempo en segundos
   const [fetchApiData, setFetchApiData] = useState(true);
   const [question, setQuestion] = useState('Cargando pregunta...');
   const [options, setOptions] = useState(defaultOptions);
@@ -53,7 +53,8 @@ export const QuestionCard = () => {
       } else {
         // Lógica para manejar el tiempo agotado
         alert('¡Tiempo agotado!');
-        window.location.href = '/';
+        localStorage.setItem('isGameOver', true);
+        window.location.href = '/results';
       }
     }, 1000);
 
@@ -86,7 +87,6 @@ export const QuestionCard = () => {
   useEffect(() => {
     if (counter === 0) {
       // Jugador pierde la partida
-      alert('¡Game Over!');
       localStorage.setItem('isGameOver', true);
       window.location.href = '/results';
     }
@@ -95,7 +95,7 @@ export const QuestionCard = () => {
   return (
     <Container isPast={isPast}>
       <div className="flex justify-between items-center">
-        <span className="text-zinc-800">Pregunta {questionIndex} de 10 </span>
+        <span className="text-zinc-800 ">Pregunta {questionIndex} de 10 </span>
         <div className="flex gap-3">
           {[...Array(counter)].map((_, index) => (
             <FillHeart key={index} />

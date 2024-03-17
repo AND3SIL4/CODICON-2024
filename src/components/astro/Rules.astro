@@ -3,10 +3,10 @@ import { Container } from '../react/Container';
 import Check from './Check.astro';
 
 const rules = [
-  'Debes adivinar el acertijo antes de que acabe el tiempo.',
-  'Si respondes correctamente avanzas al siguiente acertijo. ',
-  'Evita perder 3 vidas para ganar. ',
-  'Si logras responder todos los acertijos correctamente, ¡cumplirás tu misión!',
+  '⏲ - Debes adivinar los acertijos antes de que acabe el tiempo.',
+  '🟢 - Si respondes correctamente avanzas al siguiente acertijo hasta finalizar el desafio. ',
+  '❌ -  Evita equivocarte en las preguntas, procura mantener tus 3 vidas para ganar. ',
+  '🏆 Si logras responder todos los acertijos correctamente, ¡cumplirás tu misión!',
 ];
 ---
 
@@ -15,24 +15,15 @@ const rules = [
     src="../../../public/icons/rules.svg"
     alt="Rules image"
     title="Rules image"
-    class="m-auto"
+    class="m-auto mt-10"
   />
-  <div class="my-12">
+  <div class="my-4">
     <ul>
-      {
-        rules.map((rule) => (
-          <li class="text-xl m-2 flex  gap-4 ">
-            <span>
-              <Check />
-            </span>
-            {rule}
-          </li>
-        ))
-      }
+      {rules.map((rule) => <li class="text-xl m-2 flex  gap-4 ">{rule}</li>)}
     </ul>
   </div>
   <div class="flex justify-end">
-    <a href="/game">
+    <a href="/game" class="active:scale-90 transition-all duration-100">
       <img
         src="../../../public/icons/btn_info.svg"
         alt="Siguiente pagina"

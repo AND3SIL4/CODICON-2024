@@ -16,6 +16,9 @@ export default {
         game: "url('public/img/game.png')",
         info: "url('public/img/info.png')",
       },
+      animation: {
+        bounce_slow: 'bounce 5s ease-in-out infinite',
+      },
     },
   },
   plugins: [],

@@ -62,7 +62,10 @@ export function GameOver() {
           </div>
         </>
       )}
-      <a className="ml-auto" href="/">
+      <a
+        className="ml-auto active:scale-90 duration-100 transition-all"
+        href="/"
+      >
         <img
           src="/icons/btn_home.svg"
           alt="Botón de inicio"

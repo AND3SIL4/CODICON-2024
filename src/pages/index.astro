@@ -13,13 +13,17 @@ import Main from '../components/astro/Main.astro';
       alt="Imagen inicio Pandemission"
       title="Imagen inicio Pandemission"
       width="300"
+      class="animate-bounce_slow"
     />
     <h1 class="text-2xl w-[450px] text-center text-white text-wrap font-bold">
       ¿Tienes lo que se necesita para salvar al mundo de <span
-        class="text-custom_light_green">un virus</span
+        class="text-custom_light_green animate-pulse">un virus</span
       > que amenaza a la humanidad?
     </h1>
-    <a href="/getting" class="hover:-translate-y-1">
+    <a
+      href="/getting"
+      class="active:scale-90 transition-all duration-100 hover:cursor-pointer"
+    >
       <img
         src="../../public/icons/btn_inicio.svg"
         alt="Imagen de boton"

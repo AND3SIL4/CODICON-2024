@@ -1,9 +1,6 @@
-import { useState } from 'react';
 import { changeState } from '../../store';
 // Function in order to catch the tense (future, past)
 export function LinkTo({ url, isPast }) {
-  const [state, setState] = useState(false);
-
   function handleClick() {
     changeState(isPast);
     localStorage.setItem('isPast', isPast);
@@ -11,7 +8,10 @@ export function LinkTo({ url, isPast }) {
   }
 
   return (
-    <button onClick={handleClick}>
+    <button
+      onClick={handleClick}
+      className="hover:scale-105 transition-all duration-300"
+    >
       <img
         src={url}
         title="Imagen de pasado"

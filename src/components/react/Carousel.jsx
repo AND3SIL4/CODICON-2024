@@ -47,13 +47,13 @@ export const Carousel = ({ texts }) => {
       </div>
       <button
         onClick={goToNextSlide}
-        className="absolute bottom-2 right-2 px-4 py-2 rounded-full"
+        className="absolute bottom-2 right-2 px-4 py-2 rounded-full active:scale-90 transition-all duration-75"
       >
         <img
           src="../../public/icons/btn_info.svg"
-          alt="Imagen de botón"
-          title="Imagen de botón"
-          width="50"
+          alt="Botón continuar"
+          title="Botón continuar"
+          width="70"
         />
       </button>
     </div>
