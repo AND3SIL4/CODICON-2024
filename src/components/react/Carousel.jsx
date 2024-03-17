@@ -6,7 +6,7 @@ export const Carousel = ({ texts }) => {
 
   const goToNextSlide = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === texts.length - 1 ? 0 : prevIndex + 1
+      prevIndex === texts.length - 1 ? prevIndex : prevIndex + 1
     );
     if (currentIndex === texts.length - 1) {
       window.location.href = '/selection';
