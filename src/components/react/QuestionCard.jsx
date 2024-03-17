@@ -60,7 +60,9 @@ export const QuestionCard = () => {
     return () => clearTimeout(timer);
   }, [isPast, timeLeft, fetchApiData]); // Corregir dependencias del efecto
 
-  // Logica para manejar la seleccion de preguntas
+  fetchData();
+
+  /// Logica para manejar la seleccion de preguntas
   const handleOptionSelect = (option) => {
     setSelectedOption(option); // Selecciona el usuario
 
@@ -72,21 +74,23 @@ export const QuestionCard = () => {
 
       setTimeout(() => {
         setQuestionIndex(questionIndex + 1);
-        fetchData();
-
-        // Utilizar el valor actualizado de counter
-        if (counter - 1 === 0) {
-          alert('¡Game Over!');
-          localStorage.setItem('isGameOver', true);
-          window.location.href = '/results';
-        }
       }, 300);
     } else {
-      alert('¡El juego ha terminado y se debe mostrar si ganó o perdió!');
+      // Jugador gana la partida
       localStorage.setItem('isGameOver', false);
       window.location.href = '/results';
     }
   };
+
+  // Verificar si el jugador ha perdido la partida cuando el contador cambia
+  useEffect(() => {
+    if (counter === 0) {
+      // Jugador pierde la partida
+      alert('¡Game Over!');
+      localStorage.setItem('isGameOver', true);
+      window.location.href = '/results';
+    }
+  }, [counter]);
 
   return (
     <Container isPast={isPast}>

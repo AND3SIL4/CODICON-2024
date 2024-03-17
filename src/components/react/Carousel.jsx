@@ -10,6 +10,7 @@ export const Carousel = ({ texts }) => {
     );
     if (currentIndex === texts.length - 1) {
       window.location.href = '/selection';
+      return;
     }
   };
 
