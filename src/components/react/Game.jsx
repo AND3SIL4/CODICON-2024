@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import QuestionCard from './QuestionCard';
+import { QuestionCard } from './QuestionCard';
 import { GameOver } from './Congrats'; // Corregir la importación
 
 export function Game() {
