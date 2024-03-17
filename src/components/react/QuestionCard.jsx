@@ -3,6 +3,7 @@ import { Badge } from './Badge';
 import axios from 'axios';
 import { Container } from './Container';
 import { FillHart, UnFilledHeart } from './Heart';
+import { isPast as store } from '../../store.js';
 
 const url = 'http://localhost:9000/api';
 
@@ -43,6 +44,8 @@ const QuestionCard = () => {
     if (fetchApiData) {
       fetchData();
       setFetchApiData(!fetchApiData);
+      store.set(isPast); // Set the global variable store
+      console.log(store.value);
     }
 
     const timer = setTimeout(() => {
@@ -62,25 +65,24 @@ const QuestionCard = () => {
   const handleOptionSelect = (option) => {
     setSelectedOption(option); // Selecciona el usuario
 
-    // Incrementar el índice de la pregunta
+    // Incrementar el índice de la pregunta y actualizar estado de vidas
     if (questionIndex < 10) {
-      // logica para restar puntuacion
       if (option !== isCorrect) {
-        setCounter((prevCounter) => prevCounter - 1);
+        setCounter((prevCounter) => Math.max(prevCounter - 1, 0)); // Ensure counter doesn't go below
       }
 
       setTimeout(() => {
         setQuestionIndex(questionIndex + 1);
         fetchData();
+
         if (counter === 1) {
-          alert('Game over');
-          // todo redirection
-          window.location.href = '/';
+          alert('Game Over!');
+          window.location.href = '/results'; // Redirect to results page
         }
       }, 300);
     } else {
       alert('El juego se acabó y se debe mostrar si ganó o perdió');
-      window.location.href = '/';
+      window.location.href = '/results'; // Redirect to results page
     }
   };
 

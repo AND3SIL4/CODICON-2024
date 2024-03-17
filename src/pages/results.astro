@@ -2,10 +2,21 @@
 import Layout from '../layouts/Layout.astro';
 import Main from '../components/astro/Main.astro';
 import Congrats from '../components/astro/Congrats.astro';
+
+import { isPast as store } from '../store.js';
+
+console.log(store.value);
+
+let res;
+store.subscribe((e) => {
+  res = e;
+});
+
+console.log(res);
 ---
 
 <Layout title="Game page" description="Game page">
   <Main bg="bg-game">
-    <Congrats isPast={false} gameOver={false} />
+    <Congrats isPast={res} gameOver={false} />
   </Main>
 </Layout>
