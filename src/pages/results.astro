@@ -1,13 +1,11 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import QuestionCard from '../components/react/QuestionCard';
 import Main from '../components/astro/Main.astro';
+import Congrats from '../components/astro/Congrats.astro';
 ---
 
 <Layout title="Game page" description="Game page">
   <Main bg="bg-game">
-    <QuestionCard client:only />
+    <Congrats isPast={false} gameOver={false} />
   </Main>
 </Layout>
-
-

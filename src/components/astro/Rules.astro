@@ -7,7 +7,6 @@ const rules = [
   'Si respondes correctamente avanzas al siguiente acertijo. ',
   'Evita perder 3 vidas para ganar. ',
   'Si logras responder todos los acertijos correctamente, ¡cumplirás tu misión!',
-  'Otra regla',
 ];
 ---
 
@@ -18,7 +17,7 @@ const rules = [
     title="Rules image"
     class="m-auto"
   />
-  <div class="my-16">
+  <div class="my-12">
     <ul>
       {
         rules.map((rule) => (
@@ -31,5 +30,14 @@ const rules = [
         ))
       }
     </ul>
+  </div>
+  <div class="flex justify-end">
+    <a href="/game">
+      <img
+        src="../../../public/icons/btn_info.svg"
+        alt="Siguiente pagina"
+        width="70"
+      />
+    </a>
   </div>
 </Container>

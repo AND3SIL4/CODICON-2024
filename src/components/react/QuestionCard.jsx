@@ -5,16 +5,17 @@ import { Container } from './Container';
 import { FillHart, UnFilledHeart } from './Heart';
 
 const url = 'http://localhost:9000/api';
+
 const opcionesDefault = [
-  'No hay respuestas disponibles',
-  'No hay respuestas disponibles',
-  'No hay respuestas disponibles',
+  'Cargando respuesta...',
+  'Cargando respuesta...',
+  'Cargando respuesta...',
 ];
 const QuestionCard = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [timeLeft, setTimeLeft] = useState(300); // Tiempo en segundos
   const [fetchApiData, setFetchApiData] = useState(true);
-  const [question, setQuestion] = useState('No hay preguntas disponibles');
+  const [question, setQuestion] = useState('Cargando pregunta...');
   const [options, setOptions] = useState(opcionesDefault);
   const [isCorrect, setIsCorrect] = useState(false);
   const [questionIndex, setQuestionIndex] = useState(1); // Índice de la pregunta actual
@@ -59,15 +60,13 @@ const QuestionCard = () => {
 
   // Logica para manejar la seleccion de preguntas
   const handleOptionSelect = (option) => {
-    // TODO: ARREGLAR BUG PRIMERA PREGUNTA
     setSelectedOption(option); // Selecciona el usuario
 
     // Incrementar el índice de la pregunta
     if (questionIndex < 10) {
       // logica para restar puntuacion
       if (option !== isCorrect) {
-        console.log(counter);
-        setCounter(counter - 1);
+        setCounter((prevCounter) => prevCounter - 1);
       }
 
       setTimeout(() => {
@@ -76,12 +75,12 @@ const QuestionCard = () => {
         if (counter === 1) {
           alert('Game over');
           // todo redirection
-        } else {
-          alert('Winner');
+          window.location.href = '/';
         }
       }, 300);
     } else {
       alert('El juego se acabó y se debe mostrar si ganó o perdió');
+      window.location.href = '/';
     }
   };
 
@@ -90,25 +89,25 @@ const QuestionCard = () => {
       <div className="flex justify-between items-center">
         <span className="text-zinc-800">Pregunta {questionIndex} de 10 </span>
         {counter === 3 ? (
-          <ContenedorHeart className="flex gap-3 text-custom_light_green">
+          <ContenedorHeart isPast={isPast}>
             <FillHart />
             <FillHart />
             <FillHart />
           </ContenedorHeart>
         ) : counter === 2 ? (
-          <ContenedorHeart className="flex gap-3 text-custom_light_green">
+          <ContenedorHeart isPast={isPast}>
             <UnFilledHeart />
             <FillHart />
             <FillHart />
           </ContenedorHeart>
         ) : counter === 1 ? (
-          <ContenedorHeart className="flex gap-3 text-custom_light_green">
+          <ContenedorHeart isPast={isPast}>
             <UnFilledHeart />
             <UnFilledHeart />
             <FillHart />
           </ContenedorHeart>
         ) : (
-          <ContenedorHeart className="flex gap-3 text-custom_light_green">
+          <ContenedorHeart isPast={isPast}>
             <UnFilledHeart />
             <UnFilledHeart />
             <UnFilledHeart />
@@ -152,7 +151,7 @@ function ContenedorHeart({ isPast, children }) {
   return (
     <span
       className={`flex gap-3 ${
-        !isPast ? 'text-custom_light_green' : 'text-custom_purple'
+        isPast ? 'text-custom_light_green' : 'text-custom_purple'
       }`}
     >
       {children}

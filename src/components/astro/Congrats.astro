@@ -2,7 +2,7 @@
 import { Badge } from '../react/Badge';
 
 interface Props {
-  isPast: boolean;
+  isPast?: boolean;
   gameOver: boolean;
 }
 
@@ -11,7 +11,7 @@ const { isPast, gameOver } = Astro.props;
 
 <div
   id="container"
-  class={`${isPast ? 'bg-custom_purple' : 'bg-custom_light_green'} shadow-xl shadow-blac max-w-[700px] py-4 px-8 rounded-xl h-[430px]`}
+  class={`${gameOver ? 'bg-custom_purple' : ''} ${isPast ? 'bg-custom_purple' : 'bg-custom_light_green'}  w-[700px] py-4 px-8 rounded-xl h-[430px] border-2 border-black shadow-xl shadow-black`}
 >
   <Badge title={isPast ? 'Pasado ' : 'Futuro'} />
   {
@@ -26,7 +26,8 @@ const { isPast, gameOver } = Astro.props;
         <div class="mt-24">
           <h1 class="text-2xl text-center font-bold mx-12 mt-12">
             ¡Lo sentimos! <br />
-            Has fallado esta vez, ¡el virus se ha transmitido sin control!
+            Has fallado esta vez, ¡el virus se ha <br /> transmitido sin
+            control!
           </h1>
           <p class="m-3 text-lg text-center">
             La humanidad cuenta sus últimos días.
@@ -39,11 +40,11 @@ const { isPast, gameOver } = Astro.props;
           id="character"
           src={`${isPast ? '../../../public/characters/past.svg ' : '../../../public/characters/future.svg'}`}
           alt={`Imagen personaje de ${isPast ? 'Pasado' : 'Futuro'}`}
-          width="250"
+          width="230"
         />
         <div class="mt-20">
           <h1 class="text-2xl text-center font-bold mx-12 mt-12">
-            ¡Felicidades! <br /> Sabíamos que podíamos contar contigo,
+            ¡Felicidades! <br /> Sabíamos que podíamos contar contigo, <br />
             {isPast
               ? '¡has evitado que el virus se propague!'
               : '¡has encontrado el antídoto!'}

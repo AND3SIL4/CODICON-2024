@@ -4,7 +4,7 @@ import {} from 'react-router-dom';
 export function LinkTo({ url, isPast }) {
   function handleClick() {
     localStorage.setItem('isPast', isPast);
-    window.location.href = '/game'
+    window.location.href = '/rules'
     return isPast;
   }
 
