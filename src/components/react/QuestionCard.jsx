@@ -4,7 +4,7 @@ import { Container } from './Container';
 import { Badge } from './Badge';
 import axios from 'axios';
 
-const apiUrl = 'http://localhost:9000/api'; // Constante
+const apiUrl = 'https://api-codicon-2024.onrender.com/api'; // Constante
 
 const defaultOptions = [
   'Cargando respuesta...',
