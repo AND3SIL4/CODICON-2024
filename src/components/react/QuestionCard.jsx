@@ -1,51 +1,50 @@
+import { FillHeart, UnfilledHeart } from './Heart'; // Corregir nombre de componentes
 import { useState, useEffect } from 'react';
+import { Container } from './Container';
 import { Badge } from './Badge';
 import axios from 'axios';
-import { Container } from './Container';
-import { FillHart, UnFilledHeart } from './Heart';
-import { isPast as store } from '../../store.js';
 
-const url = 'http://localhost:9000/api';
+const apiUrl = 'http://localhost:9000/api'; // Constante
 
-const opcionesDefault = [
+const defaultOptions = [
   'Cargando respuesta...',
   'Cargando respuesta...',
   'Cargando respuesta...',
 ];
-const QuestionCard = () => {
+
+export const QuestionCard = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   const [timeLeft, setTimeLeft] = useState(300); // Tiempo en segundos
   const [fetchApiData, setFetchApiData] = useState(true);
   const [question, setQuestion] = useState('Cargando pregunta...');
-  const [options, setOptions] = useState(opcionesDefault);
+  const [options, setOptions] = useState(defaultOptions);
   const [isCorrect, setIsCorrect] = useState(false);
   const [questionIndex, setQuestionIndex] = useState(1); // Índice de la pregunta actual
   const [counter, setCounter] = useState(3);
 
-  let isPast = localStorage.getItem('isPast');
-  isPast = JSON.parse(isPast);
+  const [isPast, setIsPast] = useState(
+    JSON.parse(localStorage.getItem('isPast'))
+  );
 
   const fetchData = async () => {
     try {
       const response = await axios.get(
         isPast
-          ? `${url}/past/${questionIndex}`
-          : `${url}/future/${questionIndex}`
+          ? `${apiUrl}/past/${questionIndex}`
+          : `${apiUrl}/future/${questionIndex}`
       );
       setQuestion(response.data.pregunta.toUpperCase());
       setOptions(response.data.opciones);
       setIsCorrect(response.data.respuesta);
     } catch (error) {
-      console.error('Error fetching question data:', error);
+      console.error('Error al obtener datos de la pregunta:', error);
     }
   };
 
   useEffect(() => {
     if (fetchApiData) {
       fetchData();
-      setFetchApiData(!fetchApiData);
-      store.set(isPast); // Set the global variable store
-      console.log(store.value);
+      setFetchApiData(false); // Corregir lógica de actualización de estado
     }
 
     const timer = setTimeout(() => {
@@ -53,13 +52,13 @@ const QuestionCard = () => {
         setTimeLeft(timeLeft - 1);
       } else {
         // Lógica para manejar el tiempo agotado
-        alert('Tiempo agotado');
+        alert('¡Tiempo agotado!');
         window.location.href = '/';
       }
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, [isPast, timeLeft]);
+  }, [isPast, timeLeft, fetchApiData]); // Corregir dependencias del efecto
 
   // Logica para manejar la seleccion de preguntas
   const handleOptionSelect = (option) => {
@@ -75,14 +74,17 @@ const QuestionCard = () => {
         setQuestionIndex(questionIndex + 1);
         fetchData();
 
-        if (counter === 1) {
-          alert('Game Over!');
-          window.location.href = '/results'; // Redirect to results page
+        // Utilizar el valor actualizado de counter
+        if (counter - 1 === 0) {
+          alert('¡Game Over!');
+          localStorage.setItem('isGameOver', true);
+          window.location.href = '/results';
         }
       }, 300);
     } else {
-      alert('El juego se acabó y se debe mostrar si ganó o perdió');
-      window.location.href = '/results'; // Redirect to results page
+      alert('¡El juego ha terminado y se debe mostrar si ganó o perdió!');
+      localStorage.setItem('isGameOver', false);
+      window.location.href = '/results';
     }
   };
 
@@ -90,36 +92,20 @@ const QuestionCard = () => {
     <Container isPast={isPast}>
       <div className="flex justify-between items-center">
         <span className="text-zinc-800">Pregunta {questionIndex} de 10 </span>
-        {counter === 3 ? (
-          <ContenedorHeart isPast={isPast}>
-            <FillHart />
-            <FillHart />
-            <FillHart />
-          </ContenedorHeart>
-        ) : counter === 2 ? (
-          <ContenedorHeart isPast={isPast}>
-            <UnFilledHeart />
-            <FillHart />
-            <FillHart />
-          </ContenedorHeart>
-        ) : counter === 1 ? (
-          <ContenedorHeart isPast={isPast}>
-            <UnFilledHeart />
-            <UnFilledHeart />
-            <FillHart />
-          </ContenedorHeart>
-        ) : (
-          <ContenedorHeart isPast={isPast}>
-            <UnFilledHeart />
-            <UnFilledHeart />
-            <UnFilledHeart />
-          </ContenedorHeart>
-        )}
+        <div className="flex gap-3">
+          {[...Array(counter)].map((_, index) => (
+            <FillHeart key={index} />
+          ))}
+          {[...Array(3 - counter)].map((_, index) => (
+            <UnfilledHeart key={index} />
+          ))}
+        </div>
       </div>
       <div className="flex justify-center items-center flex-col gap-3 mb-4">
         <span className="text-black px-2 py-1 rounded-md flex gap-3">
           <span>
-            <img src="../../../public/icons/clock.svg" alt="Reloj" />
+            <img src="/icons/clock.svg" alt="Reloj" />{' '}
+            {/* Corregir ruta de imagen */}
           </span>
           {`${timeLeft}s`}
         </span>
@@ -146,17 +132,3 @@ const QuestionCard = () => {
     </Container>
   );
 };
-
-export default QuestionCard;
-
-function ContenedorHeart({ isPast, children }) {
-  return (
-    <span
-      className={`flex gap-3 ${
-        isPast ? 'text-custom_light_green' : 'text-custom_purple'
-      }`}
-    >
-      {children}
-    </span>
-  );
-}

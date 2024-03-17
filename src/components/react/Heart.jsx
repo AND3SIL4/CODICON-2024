@@ -1,4 +1,4 @@
-export const FillHart = () => (
+export const FillHeart = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
@@ -14,7 +14,7 @@ export const FillHart = () => (
   </svg>
 );
 
-export const UnFilledHeart = () => (
+export const UnfilledHeart = () => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width="24"
@@ -23,8 +23,8 @@ export const UnFilledHeart = () => (
     fill="#E6E6E6"
     stroke="black"
     strokeWidth="1"
-    stroke-linecap="round"
-    stroke-linejoin="round"
+    strokeLinecap="round"
+    strokeLinejoin="round"
     className="icon icon-tabler icons-tabler-outline icon-tabler-heart"
   >
     <path stroke="none" d="M0 0h24v24H0z" fill="none" />

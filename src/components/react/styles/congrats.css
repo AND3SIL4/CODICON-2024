@@ -1,0 +1,16 @@
+/* styles.css */
+#container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+#character {
+  position: absolute;
+  top: -70px;
+  right: 230px;
+}
+
+a {
+  justify-content: flex-end;
+}
