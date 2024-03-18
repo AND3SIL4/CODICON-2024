@@ -1,6 +1,5 @@
 ---
 import { Container } from '../react/Container';
-import Check from './Check.astro';
 
 const rules = [
   '⏲ - Debes adivinar los acertijos antes de que acabe el tiempo.',
@@ -12,7 +11,7 @@ const rules = [
 
 <Container isPast>
   <img
-    src="../../../public/icons/rules.svg"
+    src="/icons/rules.svg"
     alt="Rules image"
     title="Rules image"
     class="m-auto mt-10"
@@ -25,7 +24,7 @@ const rules = [
   <div class="flex justify-end">
     <a href="/game" class="active:scale-90 transition-all duration-100">
       <img
-        src="../../../public/icons/btn_info.svg"
+        src="/icons/btn_info.svg"
         alt="Siguiente pagina"
         width="70"
       />

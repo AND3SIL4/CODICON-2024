@@ -50,7 +50,7 @@ export const Carousel = ({ texts }) => {
         className="absolute bottom-2 right-2 px-4 py-2 rounded-full active:scale-90 transition-all duration-75"
       >
         <img
-          src="../../public/icons/btn_info.svg"
+          src="/icons/btn_info.svg"
           alt="Botón continuar"
           title="Botón continuar"
           width="70"

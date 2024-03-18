@@ -12,9 +12,9 @@ export default {
         custom_orange: '#FF9580',
       },
       backgroundImage: {
-        inicio: "url('public/img/inicio.png')",
-        game: "url('public/img/game.png')",
-        info: "url('public/img/info.png')",
+        inicio: "url('/img/inicio.png')",
+        game: "url('/img/game.png')",
+        info: "url('/img/info.png')",
       },
       animation: {
         bounce_slow: 'bounce 5s ease-in-out infinite',
